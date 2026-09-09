@@ -1,0 +1,4 @@
+1) Małe i częste commity
+2) Jedna zmiana = jeden commit
+3) Zawsze rób "Pull" przed pracą
+4) Pilnuj .gitignore
