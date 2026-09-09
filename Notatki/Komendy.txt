@@ -1,0 +1,21 @@
+git init – Tworzy nowe, puste repozytorium na Twoim komputerze.
+
+git clone [url] – Klonuje (pobiera) istniejące repozytorium z sieci (np. z GitHuba) na Twój dysk lokalny.
+
+git status – Pokazuje aktualny stan plików w repozytorium (jakie pliki zostały zmienione, dodane lub usunięte).
+
+git add [nazwa_pliku] – Dodaje zmiany z danego pliku do tzw. "poczekalni" (staging area), przygotowując je do zapisu. Użycie git add . dodaje wszystkie zmodyfikowane pliki.
+
+git commit -m "Opis zmian" – Zapisuje (zatwierdza) zmiany z poczekalni w lokalnej historii repozytorium. Wymaga podania krótkiego opisu tego, co zrobiono.
+
+git push – Wysyła Twoje lokalne commity (zatwierdzone zmiany) do zdalnego repozytorium na serwerze.
+
+git pull – Pobiera najnowsze zmiany ze zdalnego repozytorium i automatycznie łączy je z Twoimi lokalnymi plikami.
+
+git branch – Wyświetla listę wszystkich gałęzi (branchy) w projekcie.
+
+git checkout [nazwa_gałęzi] lub git switch [nazwa_gałęzi] – Przełącza Cię do pracy na wskazanej gałęzi.
+
+git merge [nazwa_gałęzi] – Łączy zmiany ze wskazanej gałęzi do tej, na której aktualnie się znajdujesz (np. do gałęzi main).
+
+git log – Wyświetla pełną historię commitów w repozytorium
