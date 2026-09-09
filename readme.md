@@ -1,4 +1,4 @@
-# INF.04 - zaawansowane aplikacje webowe
+# INF.04 - zaawansowane aplikacje webowe - branch
 
 Repozytorium z zadaniami z przedmiotu.
 
