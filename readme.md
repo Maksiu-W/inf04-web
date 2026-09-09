@@ -1,4 +1,4 @@
-# INF.04 - zaawansowane aplikacje webowe
+# INF.04 - zaawansowane aplikacje webowe - master
 
 Repozytorium z zadaniami z przedmiotu.
 
