@@ -1,0 +1,3 @@
+Katalog roboczy - wszystko to, co widzę i mogę edytować
+Poczekalnia - wszystko to, co zostanie zapisane podczas najbliższego commita
+Historia - zmiany zapisane na stałe w repozytorium
