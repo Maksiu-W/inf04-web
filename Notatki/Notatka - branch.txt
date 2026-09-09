@@ -1,0 +1,1 @@
+Branch to bezpieczna, równoległa wersja mojego kodu. W razie błędów nie ma wpływu na głównego brancha.
