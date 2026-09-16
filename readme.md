@@ -8,17 +8,16 @@ Repozytorium z zadaniami z przedmiotu.
 
 Repozytorium to powstało, by nauczyć się obsługi systemu GIT oraz być w stanie łatwo i szybko pobierać/przesyłać swoje prace.
 
-# Stos technologii
+# Stos używanych technologii
 
-| Technologia | Do czego służy? |
-| **React** | Biblioteka języka JavaScript służąca do budowania interaktywnych interfejsów użytkownika z gotowych komponentów. |
-| **Bootstrap** | Popularny framework CSS, który pozwala na szybkie i łatwe tworzenie responsywnych stron internetowych. |
-| **Vite** | Bardzo szybkie narzędzie budujące (bundler) oraz serwer deweloperski, usprawniające pracę nad nowoczesnymi aplikacjami webowymi. |
-| **Vitest** | Szybki framework do uruchamiania testów jednostkowych, który jest natywnie zintegrowany ze środowiskiem Vite. |
+**React**: Biblioteka języka JavaScript służąca do budowania interaktywnych interfejsów użytkownika z gotowych komponentów.
+**Bootstrap**: Popularny framework CSS, który pozwala na szybkie i łatwe tworzenie responsywnych stron internetowych.
+**Vite**: Bardzo szybkie narzędzie budujące (bundler) oraz serwer deweloperski, usprawniające pracę nad nowoczesnymi aplikacjami webowymi. 
+**Vitest**: Szybki framework do uruchamiania testów jednostkowych, który jest natywnie zintegrowany ze środowiskiem Vite.
 
-# Jak oddaję zadania
+# Proces oddawania zadań
 
-Mój proces oddawania zadań (workflow) opiera się na następujących krokach:
+Proces oddawania zadań (workflow) opiera się na następujących krokach:
 
 1. Tworzę nową gałąź dla zadania (np. `inf04-mb01`).
 2. Wysyłam kod na zdalne repozytorium za pomocą polecenia `push`.
