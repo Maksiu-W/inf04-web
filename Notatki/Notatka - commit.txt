@@ -1,1 +1,0 @@
-Każdy commit powinien być opatrzony krótką informacją o tym, co się zrobiło
