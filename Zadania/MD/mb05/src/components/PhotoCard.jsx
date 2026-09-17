@@ -21,3 +21,5 @@ function PhotoCard({title, description, category, image, alt}) {
         </>
     )
 }
+
+export default PhotoCard
