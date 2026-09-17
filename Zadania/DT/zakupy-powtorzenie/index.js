@@ -4,6 +4,9 @@ const app = express();
 
 const port = 3000;
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 var numbers = [14, 67, 9];
 
 const shoppingList = [
@@ -18,6 +21,8 @@ const shoppingList = [
     quantity: 2,
   },
 ];
+
+next_id = shoppingList.length + 1
 
 app.get("/numbers/", (req, res) => {
   const order = req.query.order;
@@ -50,22 +55,68 @@ app.get("/Shopping-List/:ID", (req, res) => {
 });
 
 app.post("/Shopping-List", (req, res) => {
+    data = req.body
+  
     const obj = 
     {
-        id: 3,
-        name: orange,
-        quantity: 4
+        id: next_id,
+        name: data.name,
+        quantity: parseInt(data.quantity)
     }
 
+    next_id++
     shoppingList.push(obj)
+
+    res.redirect("/shopping")
 })
 
-app.get("/", (req, res) => {
-  res.send("Hello from /");
-});
+// przy użyciu splice
+
+// app.delete("/shopping/:id", (req, res) => {
+//     const id = parseInt(req.params.id)
+
+//     const index = shoppingList.findIndex(item => item.id == id)
+
+//     if(index == -1)
+//     {
+//       console.log("Nie znaleziono przedmiotu!")
+//     }
+
+//     shoppingList.splice(index,1)
+
+//     res.redirect("/shopping")
+// })
+
+// przy użyciu filter
+
+app.delete("/shopping/:id", (req, res) => {
+  const id = req.params.id
+
+  shoppingList = shoppingList.filter(item => item.id != id)
+
+  app.redirect("/shopping")
+})
+
+app.put("/shopping/:id", (req, res) => {
+    const id = parseInt(req.params.id)
+    let data = req.body
+
+    foundItem = shoppingList.find(item => {
+      return item.id == id
+    })
+
+    if(foundItem == undefined){
+      return res.send("Nie znaleziono przedmiotu!")
+    }
+
+    foundItem.name = data.name
+    foundItem.quantity = parseInt(data.quantity)
+
+    res.redirect("/shopping")
+})
 
 app.get("/shopping", (req, res) => {
-  res.send("Shopping");
+  res.send("My shopping site");
 });
 
 app.get("/shopping/:name", (req, res) => {
@@ -76,6 +127,10 @@ app.get("/shopping/:name", (req, res) => {
 app.get("/shopping/shop", (req, res) => {
   const shop = req.query.shop;
   res.send(`Going to the  ${shop}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("Hello from /");
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
