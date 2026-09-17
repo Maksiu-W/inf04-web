@@ -1,5 +1,6 @@
 import './App.css'
 import CategoryBar from './components/CategoryBar'
+import Gallery from './components/Gallery'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 
       <main className='container'>
         <CategoryBar></CategoryBar>
+        <Gallery></Gallery>
       </main>
     </>
   )
