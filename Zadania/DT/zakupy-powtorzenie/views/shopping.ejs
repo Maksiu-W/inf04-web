@@ -1,0 +1,30 @@
+<!-- 
+1) <% %> - pozwala na uruchomienie JS
+2) <%= %> - ewaluuje (analizuje i oblicza) JS i wpisuje wyłącznie wynik
+3) <%- %> - wstawia "surowy" kod, np. include() 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping site</title>
+
+</head>
+
+<body>
+    
+    <ul>
+        <% shoppingList.forEach(item => { %>
+            <li><%= item.name %> <form method="post" action="/Shopping/<%=item.id%>?_method=DELETE"><input type="submit" value="Delete"></form><a href="/Shopping/edit-item">Edit</a></li>
+        <% }) %>
+    </ul>
+
+
+</body>
+
+</html>
