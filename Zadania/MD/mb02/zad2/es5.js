@@ -1,6 +1,3 @@
-// Zadanie 2 — punkt wyjścia: kod w starym stylu (ES5).
-// Tego pliku NIE poprawiamy. Zostaje jako dowód, co się zmieniło.
-
 var kursy = [
   { nazwa: "React", godziny: 30, aktywny: true },
   { nazwa: "Node.js", godziny: 20, aktywny: false },

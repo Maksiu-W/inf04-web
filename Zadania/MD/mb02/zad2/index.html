@@ -42,18 +42,14 @@
     <tbody id="wyniki"></tbody>
   </table>
 
-  <!-- es5.js jako zwykły skrypt: zmienne trafiają do zakresu globalnego -->
-  <script src="es5.js"></script>
+  <script src="./es5.js"></script>
 
-  <!-- es6.js jako moduł: ma własny zakres, więc nazwy się nie zderzają -->
   <script type="module">
     import * as es6 from "./es6.js";
 
     const BRAK = "— jeszcze nie napisane —";
     const tekst = wartosc => JSON.stringify(wartosc);
 
-    // Wywołuje funkcję z es6.js tylko wtedy, gdy ta już istnieje.
-    // Dzięki temu strona działa od pierwszego kroku, a nie dopiero na końcu.
     function sprobuj(funkcja, ...argumenty) {
       if (typeof funkcja !== "function") return BRAK;
       if (argumenty.some(a => a === undefined)) return BRAK;
@@ -66,9 +62,6 @@
 
     const pierwszy = es6.kursy && es6.kursy[0];
 
-    // [ co sprawdzamy, wynik ES5 (wzorzec), wynik ES6 ]
-    // Kolejność wierszy ma znaczenie: dodajGodziny wywołujemy PRZED
-    // sprawdzeniem oryginału, żeby wyszła na jaw ewentualna modyfikacja.
     const testy = [
       ["kursy.length",
        tekst(kursy.length),
