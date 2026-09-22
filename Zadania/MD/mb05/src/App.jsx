@@ -1,4 +1,5 @@
 import './App.css'
+import AddPhotoModal from './components/AddPhotoModal'
 import CategoryBar from './components/CategoryBar'
 import Footer from './components/Footer'
 import Gallery from './components/Gallery'
@@ -35,8 +36,9 @@ function App() {
         <CategoryBar></CategoryBar>
         <Gallery></Gallery>
       </main>
-      
+
       <Footer></Footer>
+      <AddPhotoModal></AddPhotoModal>
     </>
   )
 }
