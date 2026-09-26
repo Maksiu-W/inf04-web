@@ -8,7 +8,7 @@ function PhotoModal({id, title, description, imageLarge, alt}) {
                 <div className="modal-dialog modal-lg modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2 className="modal-title h5" id="${labelId}">${title}</h2>
+                            <h2 className="modal-title h5" id={labelId}>${title}</h2>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
                         </div>
                         <div className="modal-body">
