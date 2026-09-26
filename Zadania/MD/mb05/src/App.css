@@ -1,3 +1,40 @@
+:root{
+  --kolor-przewodni: #008080;
+}
+
+.navbar-brand, .card-title{
+  color: var(--kolor-przewodni);
+}
+
+.card{
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary{
+  background-color: var(--kolor-przewodni);
+  border-color: var(--kolor-przewodni);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--kolor-przewodni);
+  --bs-btn-border-color: var(--kolor-przewodni);
+  --bs-btn-hover-bg: var(--kolor-przewodni);
+  --bs-btn-hover-border-color: var(--kolor-przewodni);
+  --bs-btn-active-bg: var(--kolor-przewodni);
+  --bs-btn-active-border-color: var(--kolor-przewodni);
+}
+
+.btn-outline-primary:hover{
+  color: #fff;
+  background-color: var(--kolor-przewodni);
+  border-color: var(--kolor-przewodni);
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

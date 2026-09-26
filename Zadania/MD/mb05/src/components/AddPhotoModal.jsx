@@ -5,7 +5,7 @@ function AddPhotoModal() {
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h2 className="modal title h5" id="dodajZdjecieLabel">Dodaj zdjęcie</h2>
+                        <h2 className="modal-title h5" id="dodajZdjecieLabel">Dodaj zdjęcie</h2>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
                     </div>
                     <div className="modal-body">
