@@ -1,5 +1,8 @@
 import './App.css'
+import AddPhotoModal from './components/AddPhotoModal'
 import CategoryBar from './components/CategoryBar'
+import FiltersOffcanvas from './components/FiltersOffcanvas'
+import Footer from './components/Footer'
 import Gallery from './components/Gallery'
 import Navbar from './components/Navbar'
 
@@ -34,6 +37,10 @@ function App() {
         <CategoryBar></CategoryBar>
         <Gallery></Gallery>
       </main>
+
+      <Footer></Footer>
+      <AddPhotoModal></AddPhotoModal>
+      <FiltersOffcanvas></FiltersOffcanvas>
     </>
   )
 }
