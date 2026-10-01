@@ -10,6 +10,9 @@ import Navbar from './components/Navbar'
 
 function App() {
 const [zdjecia, setZdjecia] = useState(photos)
+const [aktywnaKategoria, setAktywnaKategoria] = useState('wszystkie')
+
+const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z => z.category === aktywnaKategoria)
 
   return (
     <>
@@ -38,8 +41,13 @@ const [zdjecia, setZdjecia] = useState(photos)
       </header>
 
       <main className='container'>
-        <CategoryBar></CategoryBar>
-        <Gallery zdjecia={zdjecia}></Gallery>
+        <CategoryBar aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></CategoryBar>
+        {widoczne.length === 0 && (
+          <div className='alert alert-warning'>
+              Nie znaleziono zdjęć w tej kategorii
+          </div>
+        )}
+        <Gallery zdjecia={widoczne}></Gallery>
       </main>
 
       <Footer></Footer>
