@@ -23,6 +23,12 @@ function dodajZdjecie(nowe) {
   setZdjecia([...zdjecia, {...nowe , id: noweId, favorite: false}])
 }
 
+function przelaczUlubione(id) {
+  setZdjecia(
+    zdjecia.map(z => (z.id === id ? {...z, favorite: !z.favorite} : z))
+  )
+}
+
   return (
     <>
       <Navbar></Navbar>
@@ -59,8 +65,8 @@ function dodajZdjecie(nowe) {
         <p className='text-body-secondary'>
           Wyświetlono {widoczne.length} z {zdjecia.length} zdjęć
         </p>
-        
-        <Gallery zdjecia={widoczne} onUsun={usunZdjecie}></Gallery>
+
+        <Gallery zdjecia={widoczne} onUsun={usunZdjecie} onPrzelacz={przelaczUlubione}></Gallery>
       </main>
 
       <Footer></Footer>
