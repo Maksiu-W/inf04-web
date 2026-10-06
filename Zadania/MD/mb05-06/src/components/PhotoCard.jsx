@@ -1,7 +1,7 @@
 const Nazwa_Kategorii = {gory: 'Góry', morze: 'Morze', miasto: 'Miasto'}
 const Kolor_Kategorii = {gory: 'success', morze: 'primary', miasto: 'dark'}
 
-function PhotoCard({id, title, description, category, image, alt}) {
+function PhotoCard({id, title, description, category, image, alt, onUsun}) {
     return(
         <>
             <div className="card h-100 shadow-sm">
@@ -17,6 +17,7 @@ function PhotoCard({id, title, description, category, image, alt}) {
                         {description}
                     </p>
                     <button type="button" className="btn btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target={`#zdjecie${id}`}>Powiększ</button>
+                    <button type="button" className="btn btn-outline-danger mt-2" onClick={onUsun}>Usuń</button>
                 </div>
             </div>
         </>

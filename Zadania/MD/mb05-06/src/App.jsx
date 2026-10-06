@@ -14,6 +14,10 @@ const [aktywnaKategoria, setAktywnaKategoria] = useState('wszystkie')
 
 const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z => z.category === aktywnaKategoria)
 
+function usunZdjecie(id){
+  setZdjecia(zdjecia.filter(z => z.id !== id))
+}
+
   return (
     <>
       <Navbar></Navbar>
@@ -47,7 +51,7 @@ const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z =
               Nie znaleziono zdjęć w tej kategorii
           </div>
         )}
-        <Gallery zdjecia={widoczne}></Gallery>
+        <Gallery zdjecia={widoczne} onUsun={usunZdjecie}></Gallery>
       </main>
 
       <Footer></Footer>
