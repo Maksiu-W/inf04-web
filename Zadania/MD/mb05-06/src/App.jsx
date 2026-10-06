@@ -18,6 +18,11 @@ function usunZdjecie(id){
   setZdjecia(zdjecia.filter(z => z.id !== id))
 }
 
+function dodajZdjecie(nowe) {
+  const noweId = Math.max(...zdjecia.map(z => z.id)) + 1
+  setZdjecia([...zdjecia, {...nowe , id: noweId, favorite: false}])
+}
+
   return (
     <>
       <Navbar></Navbar>
@@ -55,7 +60,7 @@ function usunZdjecie(id){
       </main>
 
       <Footer></Footer>
-      <AddPhotoModal></AddPhotoModal>
+      <AddPhotoModal onDodaj={dodajZdjecie}></AddPhotoModal>
       <FiltersOffcanvas aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></FiltersOffcanvas>
     </>
   )
