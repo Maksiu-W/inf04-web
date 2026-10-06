@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import './App.css'
+import photos from './data/photos.json'
 import AddPhotoModal from './components/AddPhotoModal'
 import CategoryBar from './components/CategoryBar'
 import FiltersOffcanvas from './components/FiltersOffcanvas'
@@ -7,6 +9,26 @@ import Gallery from './components/Gallery'
 import Navbar from './components/Navbar'
 
 function App() {
+const [zdjecia, setZdjecia] = useState(photos)
+const [aktywnaKategoria, setAktywnaKategoria] = useState('wszystkie')
+
+const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z => z.category === aktywnaKategoria)
+
+function usunZdjecie(id){
+  setZdjecia(zdjecia.filter(z => z.id !== id))
+}
+
+function dodajZdjecie(nowe) {
+  const noweId = Math.max(...zdjecia.map(z => z.id)) + 1
+  setZdjecia([...zdjecia, {...nowe , id: noweId, favorite: false}])
+}
+
+function przelaczUlubione(id) {
+  setZdjecia(
+    zdjecia.map(z => (z.id === id ? {...z, favorite: !z.favorite} : z))
+  )
+}
+
   return (
     <>
       <Navbar></Navbar>
@@ -34,13 +56,22 @@ function App() {
       </header>
 
       <main className='container'>
-        <CategoryBar></CategoryBar>
-        <Gallery></Gallery>
+        <CategoryBar aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></CategoryBar>
+        {widoczne.length === 0 && (
+          <div className='alert alert-warning'>
+              Nie znaleziono zdjęć w tej kategorii
+          </div>
+        )}
+        <p className='text-body-secondary'>
+          Wyświetlono {widoczne.length} z {zdjecia.length} zdjęć
+        </p>
+
+        <Gallery zdjecia={widoczne} onUsun={usunZdjecie} onPrzelacz={przelaczUlubione}></Gallery>
       </main>
 
       <Footer></Footer>
-      <AddPhotoModal></AddPhotoModal>
-      <FiltersOffcanvas></FiltersOffcanvas>
+      <AddPhotoModal onDodaj={dodajZdjecie}></AddPhotoModal>
+      <FiltersOffcanvas aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></FiltersOffcanvas>
     </>
   )
 }
