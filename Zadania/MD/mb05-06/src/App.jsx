@@ -56,6 +56,10 @@ function dodajZdjecie(nowe) {
               Nie znaleziono zdjęć w tej kategorii
           </div>
         )}
+        <p className='text-body-secondary'>
+          Wyświetlono {widoczne.length} z {zdjecia.length} zdjęć
+        </p>
+        
         <Gallery zdjecia={widoczne} onUsun={usunZdjecie}></Gallery>
       </main>
 
