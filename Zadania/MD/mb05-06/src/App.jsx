@@ -52,7 +52,7 @@ const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z =
 
       <Footer></Footer>
       <AddPhotoModal></AddPhotoModal>
-      <FiltersOffcanvas></FiltersOffcanvas>
+      <FiltersOffcanvas aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></FiltersOffcanvas>
     </>
   )
 }

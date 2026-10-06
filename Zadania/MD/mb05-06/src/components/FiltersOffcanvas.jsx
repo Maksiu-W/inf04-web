@@ -1,37 +1,41 @@
-function FilterOffcanvas() {
-    return(
-        <>
-            <div className="offcanvas offcanvas-start" tabIndex="-1" id="panelFiltrow" aria-labelledby="panelFiltrowLabel">
-                <div className="offcanvas-header">
-                    <h2 className="offcanvas-name h5" id="panelFiltrowLabel">
-                        Filtry    
-                    </h2>    
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Zamknij"></button>
-                </div>    
+const KATEGORIE = [
+  { value: 'gory', label: 'Góry' },
+  { value: 'morze', label: 'Morze' },
+  { value: 'miasto', label: 'Miasto' },
+]
 
-                <div className="offcanvas-body">
-                    <p className="text-body-secondary">
-                        Zaznacz kategorie, które chcesz zobaczyć: 
-                    </p>
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="filtrGory" defaultChecked></input>
-                        <label className="form-check-label" htmlFor="filtrGory">Góry</label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="filtrMorze" defaultChecked></input>
-                        <label className="form-check-label" htmlFor="filtrMorze">Morze</label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="filtrMiasto" defaultChecked></input>
-                        <label className="form-check-label" htmlFor="filtrMiasto">Miasto</label>
-                    </div>
+function FiltersOffcanvas({ aktywna, onWybierz }) {
+  function przelacz(kategoria) {
+    onWybierz(aktywna === kategoria ? 'wszystkie' : kategoria)
+  }
 
-                    <button type="button" className="btn btn-primary w-100 mt-4" data-bs-dismiss="offcanvas">Zamknij</button>
-                </div>
-            </div>        
-            
-        </>
-    )
+  return (
+    <div className="offcanvas offcanvas-start" tabIndex="-1" id="panelFiltrow" aria-labelledby="panelFiltrowLabel">
+      <div className="offcanvas-header">
+        <h2 className="offcanvas-title h5" id="panelFiltrowLabel">
+          Filtry
+        </h2>
+        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Zamknij"></button>
+      </div>
+
+      <div className="offcanvas-body">
+        <p className="text-body-secondary">Zaznacz kategorię, którą chcesz zobaczyć:</p>
+
+        {KATEGORIE.map(kategoria => (
+          <div className="form-check" key={kategoria.value}>
+            <input className="form-check-input" type="checkbox" id={`filtr-${kategoria.value}`} checked={aktywna === kategoria.value || aktywna === 'wszystkie'} onChange={() => przelacz(kategoria.value)}/>
+            <label className="form-check-label" htmlFor={`filtr-${kategoria.value}`}>
+              {kategoria.label}
+            </label>
+          </div>
+        ))}
+
+        <button type="button" className="btn btn-primary w-100 mt-4" data-bs-dismiss="offcanvas">
+          Zamknij
+        </button>
+      </div>
+    </div>
+  )
 }
 
-export default FilterOffcanvas
+export default FiltersOffcanvas
