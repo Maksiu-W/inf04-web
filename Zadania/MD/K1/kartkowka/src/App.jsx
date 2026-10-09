@@ -1,33 +1,24 @@
-import { useState } from 'react'
 import kluby from './wariant28'
-import './App.css'
-
-function Pozycja({nazwa})
-{
-  return <li>{nazwa}</li>
-}
+import "bootstrap/dist/css/bootstrap.min.css";
+import Pozycja from './components/Pozycja';
+import Formularz from './components/Formularz';
 
 function App() {
-  const [imieNazwisko, setImieNazwisko] = useState("")
-  const [numer, setNumer] = useState("")
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-
-    console.log("Imię i nazwisko:" + imieNazwisko)
-
-    const index = parseInt(numer, 10) - 1
-    if(kluby[index]){
-      console.log("Wybrany klub: " + kluby[index])
-    } 
-    else{
-      console.log("Nieprawdidłowy numer klubu piłkarskiego!")
-    }
-  }
-
   return (
     <>
-      
+      <div className='container mt-4'>
+        <h2 className='mb-4'>
+          Liczba klubów piłkarskich: {kluby.length}
+        </h2>
+
+        <ol className='mb-4'>
+          {kluby.map((klub, index) => (
+            <Pozycja key={index} nazwa={klub}></Pozycja>
+          ))}
+        </ol>
+
+        <Formularz />
+      </div>
     </>
   )
 }
