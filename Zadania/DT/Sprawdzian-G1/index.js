@@ -1,6 +1,15 @@
 const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
 
 const app = express()
+
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(cookieParser())
+
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 
 let movies = [
   {
@@ -87,7 +96,7 @@ app.post("/api/movies", (req, res) => {
 
         movies.push(movie)
 
-        res.status(201).send("Dodano film!")
+        res.status(201).redirect("/")
     }
     else
     {
@@ -128,11 +137,12 @@ app.put("/api/movies/:id", (req, res) => {
 
 app.post("/api/movies/:id/reviews", (req, res) => {
     const {id} = req.params
-    const {author, rating, text} = req.body
+    const {author, text} = req.body
+    const rating = parseInt(req.body.rating)
 
     let result = [...movies]
 
-    if(id && author && rating && text && rating <= 5 && rating >=1)
+    if(id && author && rating && text && rating <= 5 && rating >= 1)
     {
         let movie = result.find(m => m.id === parseInt(id))
         if(movie)
@@ -142,7 +152,8 @@ app.post("/api/movies/:id/reviews", (req, res) => {
 
             movie.reviews.push(review)
 
-            res.status(201).send("Dodano recenzję!")
+            res.cookie('savedAuthor', author, {maxAge: 7 * 24 * 60 * 60 * 1000})
+            res.redirect("/")
         }
         else
         {
@@ -181,6 +192,12 @@ app.delete("/api/movies/:id/reviews/:reviewId", (req, res) => {
     {
         res.status(404).send("Brak filmu o podanym id!")
     }
+})
+
+app.get("/", (req, res) => {
+    const listaFilmow = movies
+    const savedAuthor = req.cookies.savedAuthor || ""
+    res.render('index', {listaFilmow: listaFilmow, savedAuthor: savedAuthor})
 })
 
 app.listen(3000, () => {

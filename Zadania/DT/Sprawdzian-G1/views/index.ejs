@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Filmy</title>
+
+</head>
+
+<body>
+    
+<ol>
+    <% listaFilmow.forEach(film => { %>
+        <li>
+            <h1> <%= film.title %> (<%= film.year %>) - <%= film.genre %> </h1>
+            <p>
+                <%
+                let avg = 0
+                let sum = 0
+                if(film.reviews.length !== 0)
+                {
+                    film.reviews.forEach(recenzja => {
+                        sum += recenzja.rating
+                    })
+                    avg = sum / film.reviews.length %>
+                    Średnia ocen: <%= avg.toFixed(2) %>
+                <% }
+                else
+                { %>
+                    <%= "Brak ocen" %>
+                <% } %>
+                <form method="post" action="/api/movies/<%=film.id%>/reviews">
+                    <label for="author"> Autor recenzji: </label>
+                    <input id="author" name="author" type="text" value="<%=savedAuthor%>"/>
+                    <label for="rating">Ocena (1-5): </label>
+                    <input id="rating" name="rating" type="number" min="1" max="5"/>
+                    <label for="text">Komentarz: </label>
+                    <input id="text" name="text" type="text"/>
+                    <button type="submit">Zatwierdź</button>
+                </form>
+            </p>
+
+        </li>
+    <% }) %>
+</ol>
+
+</body>
+
+</html>
