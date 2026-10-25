@@ -45,6 +45,27 @@ function przelaczUlubione(id) {
   )
 }
 
+if (isLoading) {
+    return (
+      <div className="text-center mt-5">
+        <div className="spinner-border text-primary" role="status" />
+        <p className="mt-2 text-muted">Ładowanie galerii...</p>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="alert alert-danger m-4">
+        Nie udało się pobrać danych: {error}
+      </div>
+    )
+  }
+
+  if (zdjecia.length === 0) {
+    return <div className="alert alert-secondary m-4">Katalog jest na razie pusty.</div>
+  }
+
   return (
     <>
       <Navbar></Navbar>
