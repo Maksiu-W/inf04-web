@@ -11,6 +11,8 @@ import ZdjecieDnia from './components/ZdjecieDnia'
 function App() {
 const [zdjecia, setZdjecia] = useState([])
 const [aktywnaKategoria, setAktywnaKategoria] = useState('wszystkie')
+const [isLoading, setIsLoading] = useState(true)
+const [error, setError] = useState(null)
 
 useEffect(() => {
     async function pobierzZdjecia() {
@@ -36,8 +38,9 @@ function usunZdjecie(id){
 }
 
 function dodajZdjecie(nowe) {
-  const noweId = Math.max(...zdjecia.map(z => z.id)) + 1
-  setZdjecia([...zdjecia, {...nowe , id: noweId, favorite: false}])
+  const maxId = zdjecia.length > 0 ? Math.max(...zdjecia.map(z => z.id)) : 0
+  const noweId = maxId + 1
+  setZdjecia([...zdjecia, { ...nowe, id: noweId, favorite: false }])
 }
 
 function przelaczUlubione(id) {
@@ -105,12 +108,12 @@ if (isLoading) {
         </p>
 
         <Gallery zdjecia={widoczne} onUsun={usunZdjecie} onPrzelacz={przelaczUlubione}></Gallery>
+        <ZdjecieDnia></ZdjecieDnia>
       </main>
 
       <Footer></Footer>
       <AddPhotoModal onDodaj={dodajZdjecie}></AddPhotoModal>
       <FiltersOffcanvas aktywna={aktywnaKategoria} onWybierz={setAktywnaKategoria}></FiltersOffcanvas>
-      <ZdjecieDnia></ZdjecieDnia>
     </>
   )
 }
