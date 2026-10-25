@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import AddPhotoModal from './components/AddPhotoModal'
 import CategoryBar from './components/CategoryBar'
@@ -10,6 +10,23 @@ import Navbar from './components/Navbar'
 function App() {
 const [zdjecia, setZdjecia] = useState([])
 const [aktywnaKategoria, setAktywnaKategoria] = useState('wszystkie')
+
+useEffect(() => {
+    async function pobierzZdjecia() {
+      try {
+        const odpowiedz = await fetch('/photos.json')
+        if (!odpowiedz.ok) throw new Error('Błąd serwera: ' + odpowiedz.status)
+        const dane = await odpowiedz.json()
+        setZdjecia(dane)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    pobierzZdjecia()
+  }, [])
 
 const widoczne = aktywnaKategoria === 'wszystkie' ? zdjecia : zdjecia.filter(z => z.category === aktywnaKategoria)
 
