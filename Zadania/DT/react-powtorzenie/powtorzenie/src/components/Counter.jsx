@@ -15,11 +15,16 @@ export default function Counter(){
         //lub po prostu setCount(count + 3)
     }
 
+    function setToTen(){
+        setCount(10)
+    }
+
     return(
         <>
             <p>{count}</p>
             <button onClick={addOne}>+1</button>
             <button onClick={addThree}>+3</button>
+            <button onClick={setToTen}>10</button>
         </>
     )
 }
