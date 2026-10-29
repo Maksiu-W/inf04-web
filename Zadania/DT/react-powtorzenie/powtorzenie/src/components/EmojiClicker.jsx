@@ -21,13 +21,21 @@ export default function EmojiClicker(){
         setEmojis(newEmojis)
     }
 
+    function makeAHeart(){
+        const newEmojis = emojis.map(e => ({...e, emoji: "❤️‍🔥"}))
+        setEmojis(newEmojis)
+    }
+
     return(
         <>
             <div style={{marginTop: "40px"}}>
                 {emojis.map((e, k) => (
                     <span key={k} style={{fontSize: "4rem"}} onClick={() => deleteEmoji(e.id)}>{e.emoji}</span>
                 ))}
-                <button onClick={addEmoji}>Add emoji</button>
+                <p>
+                    <button onClick={addEmoji}>Add emoji</button>
+                    <button onClick={makeAHeart}>Make everything a heart emoji ❤️‍🔥</button>
+                </p>
             </div>
         </>
     )

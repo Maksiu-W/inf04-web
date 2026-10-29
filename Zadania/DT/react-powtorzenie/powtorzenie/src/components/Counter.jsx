@@ -24,7 +24,7 @@ export default function Counter(){
             <p>{count}</p>
             <button onClick={addOne}>+1</button>
             <button onClick={addThree}>+3</button>
-            <button onClick={setToTen}>10</button>
+            <button onClick={setToTen}>set to 10</button>
         </>
     )
 }
