@@ -7,10 +7,19 @@ export default function Counter(){
         setCount(count + 1)
     }
 
+    function addThree(){
+        setCount(prevCount => prevCount + 1)
+        setCount(prevCount => prevCount + 1)
+        setCount(prevCount => prevCount + 1)
+
+        //lub po prostu setCount(count + 3)
+    }
+
     return(
         <>
             <p>{count}</p>
             <button onClick={addOne}>+1</button>
+            <button onClick={addThree}>+3</button>
         </>
     )
 }
